@@ -54,7 +54,7 @@ class SportsEvent implements SchemaTypeInterface
         $this->location = $location;
     }
 
-    public function getJsonLd()
+    public function getJsonLd($context = true, $json_object = true)
     {
         $jsonLd = [
             '@context' => 'http://schema.org',

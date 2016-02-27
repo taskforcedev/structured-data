@@ -14,7 +14,9 @@ class Jsonld
     public function render()
     {
         echo '<script type="application/ld+json">';
-        echo $this->type->getJsonLd();
+        $context = true;
+        $json_object = true;
+        echo $this->type->getJsonLd($context, $json_object);
         echo '</script>';
     }
 }

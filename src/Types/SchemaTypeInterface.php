@@ -2,5 +2,5 @@
 
 interface SchemaTypeInterface
 {
-    public function getJsonLd();
+    public function getJsonLd($context, $json_object);
 }

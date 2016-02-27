@@ -23,7 +23,7 @@ class LocalBusiness implements SchemaTypeInterface
         $this->address = $address;
     }
 
-    public function getJsonLd($context = false, $array = true)
+    public function getJsonLd($context = true, $json_object = true)
     {
         $jsonLd = [
             '@type' => 'LocalBusiness',
@@ -41,12 +41,12 @@ class LocalBusiness implements SchemaTypeInterface
 
         $jsonLd['name'] = $this->name;
 
-        if ($array === true) {
-            return $jsonLd;
+        if ($json_object === true) {
+            $object = (object)$jsonLd;
+
+            return json_encode($object);
         }
 
-        $object = (object)$jsonLd;
-
-        return json_encode($object);
+        return $jsonLd;
     }
 }
