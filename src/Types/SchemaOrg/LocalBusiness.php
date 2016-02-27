@@ -36,7 +36,8 @@ class LocalBusiness implements SchemaTypeInterface
         foreach ($optionalFields as $field)
         {
             if ($this->$field !== '') {
-            $jsonLd[$field] = $this->$field;
+                $jsonLd[$field] = $this->$field;
+            }
         }
 
         $jsonLd['name'] = $this->name;
