@@ -7,6 +7,7 @@
             "email": "taskforce2eu@gmail.com"
         }
     ],
+    "license": "GPL-3.0",
     "keywords": ["Schema.org", "Rich Snippets", "Structured Data"],
     "require": {
         "php": ">=5.5.0"
