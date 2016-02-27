@@ -6,10 +6,16 @@ class LocalBusiness implements SchemaTypeInterface
 {
     public $address;
     public $name;
+    public $url;
 
     public function setName($name)
     {
         $this->name = $name;
+    }
+
+    public function setUrl($url)
+    {
+        $this->url = $url;
     }
 
     public function setAddress($address)
@@ -25,8 +31,12 @@ class LocalBusiness implements SchemaTypeInterface
 
         if ($context === true) { $jsonLd['@context'] = 'http://schema.org'; }
 
-        if ($this->address !== '') {
-            $jsonLd['address'] = $this->address;
+        $optionalFields = ['address', 'url'];
+
+        foreach ($optionalFields as $field)
+        {
+            if ($this->$field !== '') {
+            $jsonLd[$field] = $this->$field
         }
 
         $jsonLd['name'] = $this->name;
