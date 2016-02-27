@@ -15,7 +15,7 @@ class SportsEvent implements SchemaTypeInterface
 
         foreach ($fields as $field) {
             if (array_key_exists($field, $options)) {
-                $this->$field = $options[$field]
+                $this->$field = $options[$field];
             } else {
                 $this->$field = '';
             }
