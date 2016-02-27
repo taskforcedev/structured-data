@@ -6,11 +6,13 @@ class Person implements SchemaTypeInterface
 {
     public $givenName;
     public $familyName;
+    public $email;
 
     public function setGivenName($givenName) { $this->givenName = $givenName; }
     public function setForename($forename) { $this->givenName = $forename; }
     public function setFamilyName($familyName) { $this->familyName = $familyName; }
     public function setSurname($surname) { $this->familyName = $surname; }
+    public function setEmail($email) { $this->email = $email; }
 
     public function getJsonLd($context = true, $json_object = true)
     {
@@ -29,7 +31,7 @@ class Person implements SchemaTypeInterface
             }
         }
 
-        $optionalFields = [];
+        $optionalFields = ['email'];
 
         foreach ($optionalFields as $field)
         {
