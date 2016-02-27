@@ -17,7 +17,7 @@ class Place implements SchemaTypeInterface
         $this->address = $address;
     }
 
-    public function getJsonLd($context = false, $array = true)
+    public function getJsonLd($context = false, $json_object = false)
     {
         $jsonLd = [
             '@type' => 'Place',
@@ -28,12 +28,12 @@ class Place implements SchemaTypeInterface
         $jsonLd['address'] = $this->address;
         $jsonLd['name'] = $this->name;
 
-        if ($array === true) {
-            return $jsonLd;
+        if ($json_object === true) {
+            $object = (object)$jsonLd;
+
+            return json_encode($object);
         }
 
-        $object = (object)$jsonLd;
-
-        return json_encode($object);
+        return $jsonLd;
     }
 }
