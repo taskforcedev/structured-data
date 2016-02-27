@@ -30,7 +30,7 @@ class PostalAddress implements SchemaTypeInterface
         $this->postalCode = $postCode;
     }
 
-    public function getJsonLd($context = false)
+    public function getJsonLd($context = false, $json_object = false)
     {
         $jsonLd = [
             '@type' => 'PostalAddress',
@@ -41,6 +41,12 @@ class PostalAddress implements SchemaTypeInterface
         if ($this->streetAddress !== '') { $jsonLd['streetAddress'] = $this->streetAddress; }
         if ($this->addressCountry !== '') { $jsonLd['addressCountry'] = $this->addressCountry; }
         if ($this->postalCode !== '') { $jsonLd['postalCode'] = $this->postalCode; }
+
+        if ($json_object === true) {
+            $object = (object)$jsonLd;
+
+            return json_encode($object);
+        }
 
         return $jsonLd;
     }
