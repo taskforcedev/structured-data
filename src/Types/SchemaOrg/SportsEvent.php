@@ -44,9 +44,9 @@ class SportsEvent implements SchemaTypeInterface
         $this->eventStatus = $eventStatus;
     }
 
-    public function setDate($date)
+    public function setStartDate($startDate)
     {
-        $this->date = $date;
+        $this->startDate = $startDate;
     }
 
     public function setLocation($location)
