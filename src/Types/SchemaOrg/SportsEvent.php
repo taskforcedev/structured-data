@@ -5,9 +5,9 @@ use Taskforcedev\StructuredData\Types\SchemaTypeInterface;
 class SportsEvent implements SchemaTypeInterface
 {
     public $name; // Required.
-    public $eventStatus;
     public $startDate; // Required.
     public $location; // Required.
+    public $eventStatus; // Optional.
 
     public function __construct($options = [])
     {
