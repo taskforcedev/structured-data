@@ -4,14 +4,14 @@ use Taskforcedev\StructuredData\Types\SchemaTypeInterface;
 
 class SportsEvent implements SchemaTypeInterface
 {
-    public $name;
-    public $status;
-    public $date;
-    public $location;
+    public $name; // Required.
+    public $eventStatus;
+    public $startDate; // Required.
+    public $location; // Required.
 
     public function __construct($options = [])
     {
-        $fields = ['name', 'status', 'date', 'location'];
+        $fields = ['name', 'eventStatus', 'startDate', 'location'];
 
         foreach ($fields as $field) {
             if (array_key_exists($field, $options)) {
@@ -21,8 +21,8 @@ class SportsEvent implements SchemaTypeInterface
             }
         }
 
-        if ($this->status == '') {
-            $this->status = 'EventScheduled';
+        if ($this->eventStatus == '') {
+            $this->eventStatus = 'EventScheduled';
         }
     }
 
@@ -31,17 +31,17 @@ class SportsEvent implements SchemaTypeInterface
         $this->name = $name;
     }
 
-    public function setStatus($status = 'EventScheduled')
+    public function setEventStatus($eventStatus = 'EventScheduled')
     {
         $validStatuses = [
             'EventCancelled', 'EventPostponed', 'EventRescheduled', 'EventScheduled'
         ];
 
-        if (!in_array($status, $validStatuses)) {
-            $status = 'EventScheduled';
+        if (!in_array($eventStatus, $validStatuses)) {
+            $eventStatus = 'EventScheduled';
         }
 
-        $this->status = $status;
+        $this->eventStatus = $eventStatus;
     }
 
     public function setDate($date)
@@ -61,11 +61,25 @@ class SportsEvent implements SchemaTypeInterface
             '@type' => 'SportsEvent',
         ];
 
-        if ($this->name !== '') { $jsonLd['name'] = $this->name; }
-        if ($this->date !== '') { $jsonLd['startDate'] = $this->date; }
-        if ($this->status !== '') { $jsonLd['eventStatus'] = $this->status; }
+        $requiredFields = ['name', 'startDate'];
+
+        foreach ($requiredFields as $field) {
+            if ($this->$field !== '') {
+                $jsonLd[$field] = $this->$field;
+            }
+        }
+
+        // Location is also required but needs to be cast to an object.
         if ($this->location !== '') {
             $jsonLd['location'] = (object)$this->location;
+        }
+
+        $optionalFields = ['eventStatus'];
+
+        foreach ($optionalFields as $field) {
+            if ($this->$field !== '') {
+                $jsonLd[$field] = $this->$field;
+            }
         }
 
         $object = (object)$jsonLd;
