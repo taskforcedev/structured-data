@@ -10,6 +10,7 @@ class NewsArticle implements SchemaTypeInterface
     public $image; // Required
     public $name; // Required
     public $publisher; // Required
+    public $dateModified; // Recommended
 
     public function setAuthor($author) { $this->author = $author; }
     public function setDatePublished($datePublished) { $this->datePublished = $datePublished; }
@@ -17,6 +18,7 @@ class NewsArticle implements SchemaTypeInterface
     public function setImage($image) { $this->image = $image; }
     public function setName($name) { $this->name = $name; }
     public function setPublisher($publisher) { $this->publisher = $publisher; }
+    public function setDateModified($dateModified) { $this->dateModified = $dateModified; }
 
     public function getJsonLd($context = true, $json_object = true)
     {
