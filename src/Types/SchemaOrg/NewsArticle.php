@@ -1,0 +1,55 @@
+<?php namespace Taskforcedev\StructuredData\Types\SchemaOrg;
+
+use Taskforcedev\StructuredData\Types\SchemaTypeInterface;
+
+class NewsArticle implements SchemaTypeInterface
+{
+    public $author; // Required
+    public $datePublished; // Required
+    public $headline; // Required
+    public $image; // Required
+    public $name; // Required
+    public $publisher; // Required
+
+    public function setAuthor($author) { $this->author = $author; }
+    public function setDatePublished($datePublished) { $this->datePublished = $datePublished; }
+    public function setHeadline($headline) { $this->headline = $headline; }
+    public function setImage($image) { $this->image = $image; }
+    public function setName($name) { $this->name = $name; }
+    public function setPublisher($publisher) { $this->publisher = $publisher; }
+
+    public function getJsonLd($context = true, $json_object = true)
+    {
+        $jsonLd = [
+            '@type' => 'NewsArticle',
+        ];
+
+        if ($context === true) { $jsonLd['@context'] = 'http://schema.org'; }
+
+        $requiredFields = ['author', 'datePublished', 'headline', 'image', 'name', 'publisher'];
+
+        foreach ($requiredFields as $field)
+        {
+            if ($this->$field !== '') {
+                $jsonLd[$field] = $this->$field;
+            }
+        }
+
+        $optionalFields = [];
+
+        foreach ($optionalFields as $field)
+        {
+            if ($this->$field !== '') {
+                $jsonLd[$field] = $this->$field;
+            }
+        }
+
+        if ($json_object === true) {
+            $object = (object)$jsonLd;
+
+            return json_encode($object);
+        }
+
+        return $jsonLd;
+    }
+}
