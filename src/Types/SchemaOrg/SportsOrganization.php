@@ -5,10 +5,11 @@ use Taskforcedev\StructuredData\Types\SchemaTypeInterface;
 class SportsOrganization implements SchemaTypeInterface
 {
     public $name; // Required.
+    public $sport; // Optional.
 
     public function __construct($options = [])
     {
-        $fields = ['name'];
+        $fields = ['name', 'sport'];
 
         foreach ($fields as $field) {
             if (array_key_exists($field, $options)) {
@@ -19,10 +20,8 @@ class SportsOrganization implements SchemaTypeInterface
         }
     }
 
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
+    public function setName($name) { $this->name = $name; }
+    public function setSport($sport) { $this->sport = $sport; }
 
     public function getJsonLd($context = true, $json_object = true)
     {
@@ -39,7 +38,7 @@ class SportsOrganization implements SchemaTypeInterface
             }
         }
 
-        $optionalFields = [];
+        $optionalFields = ['sport'];
 
         foreach ($optionalFields as $field) {
             if ($this->$field !== '') {
