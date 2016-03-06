@@ -26,10 +26,7 @@ class SportsEvent implements SchemaTypeInterface
         }
     }
 
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
+    public function setName($name) { $this->name = $name; }
 
     public function setEventStatus($eventStatus = 'EventScheduled')
     {
@@ -44,15 +41,8 @@ class SportsEvent implements SchemaTypeInterface
         $this->eventStatus = $eventStatus;
     }
 
-    public function setStartDate($startDate)
-    {
-        $this->startDate = $startDate;
-    }
-
-    public function setLocation($location)
-    {
-        $this->location = $location;
-    }
+    public function setStartDate($startDate) { $this->startDate = $startDate; }
+    public function setLocation($location) { $this->location = $location; }
 
     public function getJsonLd($context = true, $json_object = true)
     {
