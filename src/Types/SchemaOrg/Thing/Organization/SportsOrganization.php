@@ -1,8 +1,9 @@
-<?php namespace Taskforcedev\StructuredData\Types\SchemaOrg;
+<?php namespace Taskforcedev\StructuredData\Types\SchemaOrg\Thing\Organization;
 
+use Taskforcedev\StructuredData\Types\SchemaOrg\Thing\Organization;
 use Taskforcedev\StructuredData\Types\SchemaTypeInterface;
 
-class SportsOrganization implements SchemaTypeInterface
+class SportsOrganization extends Organization implements SchemaTypeInterface
 {
     public $name; // Required.
     public $sport; // Optional.
