@@ -1,4 +1,4 @@
-<?php namespace Taskforcedev\StructuredData\Types\SchemaOrg;
+<?php namespace Taskforcedev\StructuredData\Types\SchemaOrg\Thing\Event;
 
 use Taskforcedev\StructuredData\Types\SchemaTypeInterface;
 
