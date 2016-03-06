@@ -5,7 +5,6 @@ use Taskforcedev\StructuredData\Types\SchemaTypeInterface;
 
 class SportsOrganization extends Organization implements SchemaTypeInterface
 {
-    public $name; // Required.
     public $sport; // Optional.
 
     public function __construct($options = [])
@@ -21,7 +20,6 @@ class SportsOrganization extends Organization implements SchemaTypeInterface
         }
     }
 
-    public function setName($name) { $this->name = $name; }
     public function setSport($sport) { $this->sport = $sport; }
 
     public function getJsonLd($context = true, $json_object = true)

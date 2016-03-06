@@ -1,8 +1,9 @@
 <?php namespace Taskforcedev\StructuredData\Types\SchemaOrg\Thing;
 
+use Taskforcedev\StructuredData\Types\SchemaOrg\Thing;
 use Taskforcedev\StructuredData\Types\SchemaTypeInterface;
 
-class Organization implements SchemaTypeInterface
+class Organization extends Thing implements SchemaTypeInterface
 {
     public function __construct($options = [])
     {
