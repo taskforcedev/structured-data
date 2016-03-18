@@ -1,7 +1,8 @@
-<?php namespace Taskforcedev\StructuredData\Tests;
+<?php namespace Taskforcedev\StructuredData\Tests\Thing\Organization\SportsOrganization;
 
 use Taskforcedev\StructuredData\Types\SchemaOrg\Thing\Organization\SportsOrganization\SportsTeam;
 use Taskforcedev\StructuredData\Types\SchemaOrg\Thing\Person;
+use Taskforcedev\StructuredData\Tests\TestCase;
 
 class SportsTeamTest extends TestCase
 {
