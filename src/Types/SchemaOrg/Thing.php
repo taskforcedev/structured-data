@@ -6,6 +6,7 @@ class Thing implements SchemaTypeInterface
 {
     public $name;
     public $sameAs;
+    public $url;
 
     public function __construct($options = [])
     {
@@ -21,6 +22,7 @@ class Thing implements SchemaTypeInterface
     }
 
     public function setName($name) { $this->name = $name; }
+    public function setUrl($url) { $this->url = $url; }
 
     public function addSameAs($url)
     {
