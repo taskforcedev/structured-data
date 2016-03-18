@@ -9,7 +9,7 @@ class SportsTeam extends SportsOrganization implements SchemaTypeInterface
     public $athletes;
     public $coach;
 
-    public function __construct(array $options)
+    public function __construct($options = [])
     {
         parent::__construct($options);
         $this->athletes = [];
