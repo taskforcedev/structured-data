@@ -1,8 +1,9 @@
-<?php namespace Taskforcedev\StructuredData\Types\SchemaOrg;
+<?php namespace Taskforcedev\StructuredData\Types\SchemaOrg\Thing\Intangible\StructuredValue\ContactPoint;
 
+use Taskforcedev\StructuredData\Types\SchemaOrg\Thing\Intangible\StructuredValueContactPoint;
 use Taskforcedev\StructuredData\Types\SchemaTypeInterface;
 
-class PostalAddress implements SchemaTypeInterface
+class PostalAddress extends ContactPoint implements SchemaTypeInterface
 {
     public $addressCountry;
     public $postalCode;
