@@ -2,7 +2,7 @@
 
 use Taskforcedev\StructuredData\Types\SchemaOrg\Thing\Organization\SportsOrganization;
 use Taskforcedev\StructuredData\Types\SchemaTypeInterface;
-use Taskforcedev\StructuredData\Types\SchemaOrg\Person;
+use Taskforcedev\StructuredData\Types\SchemaOrg\Thing\Person;
 
 class SportsTeam extends SportsOrganization implements SchemaTypeInterface
 {
