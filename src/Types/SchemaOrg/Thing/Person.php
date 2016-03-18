@@ -24,8 +24,7 @@ class Person implements SchemaTypeInterface
 
         $requiredFields = ['givenName', 'familyName'];
 
-        foreach ($requiredFields as $field)
-        {
+        foreach ($requiredFields as $field) {
             if ($this->$field !== '') {
                 $jsonLd[$field] = $this->$field;
             }
@@ -33,8 +32,7 @@ class Person implements SchemaTypeInterface
 
         $optionalFields = ['email'];
 
-        foreach ($optionalFields as $field)
-        {
+        foreach ($optionalFields as $field) {
             if ($this->$field !== '') {
                 $jsonLd[$field] = $this->$field;
             }

@@ -23,8 +23,7 @@ class LocalBusiness extends Organization implements SchemaTypeInterface
 
         $optionalFields = ['address', 'url'];
 
-        foreach ($optionalFields as $field)
-        {
+        foreach ($optionalFields as $field) {
             if ($this->$field !== '') {
                 $jsonLd[$field] = $this->$field;
             }

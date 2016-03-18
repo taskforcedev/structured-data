@@ -46,11 +46,13 @@ class Thing implements SchemaTypeInterface
         $this->sameAs = $sameAs;
     }
 
-    public function getRequiredFields() {
+    public function getRequiredFields()
+    {
         return [ 'name' ];
     }
 
-    public function getOptionalFields() {
+    public function getOptionalFields()
+    {
         return [ 'sameAs' ];
     }
 

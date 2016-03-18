@@ -33,8 +33,7 @@ class NewsArticle implements SchemaTypeInterface
 
         $requiredFields = ['author', 'datePublished', 'headline', 'image', 'name', 'publisher'];
 
-        foreach ($requiredFields as $field)
-        {
+        foreach ($requiredFields as $field) {
             if ($this->$field !== '') {
                 $jsonLd[$field] = $this->$field;
             }
@@ -42,8 +41,7 @@ class NewsArticle implements SchemaTypeInterface
 
         $recommendedFields = ['dateModified'];
 
-        foreach ($recommendedFields as $field)
-        {
+        foreach ($recommendedFields as $field) {
             if ($this->$field !== '') {
                 $jsonLd[$field] = $this->$field;
             }
@@ -51,8 +49,7 @@ class NewsArticle implements SchemaTypeInterface
 
         $optionalFields = [];
 
-        foreach ($optionalFields as $field)
-        {
+        foreach ($optionalFields as $field) {
             if ($this->$field !== '') {
                 $jsonLd[$field] = $this->$field;
             }
