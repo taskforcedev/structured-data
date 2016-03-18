@@ -5,6 +5,14 @@ use Taskforcedev\StructuredData\Types\SchemaOrg\Thing\Person;
 
 class SportsTeamTest extends TestCase
 {
+    public function testClassReturnsCorrectNamespace()
+    {
+        $sportsTeam = new SportsTeam();
+        $class = get_class($sportsTeam);
+
+        $this->assertEquals($class, 'Taskforcedev\StructuredData\Types\SchemaOrg\Thing\Organization\SportsOrganization\SportsTeam', 'Test namespace is correct');
+    }
+
     public function testSettingAthleteWorksIfPassedPersonInstance()
     {
         $sportsTeam = new SportsTeam();
