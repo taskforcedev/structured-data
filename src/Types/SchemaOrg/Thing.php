@@ -44,7 +44,13 @@ class Thing implements SchemaTypeInterface
         $this->sameAs = $sameAs;
     }
 
-    public function getRequiredFields() { return ['name']; }
+    public function getRequiredFields() {
+        return [ 'name' ];
+    }
+
+    public function getOptionalFields() {
+        return [ 'sameAs' ];
+    }
 
     public function getJsonLd($context = true, $json_object = true)
     {
@@ -61,7 +67,7 @@ class Thing implements SchemaTypeInterface
             }
         }
 
-        $optionalFields = [ 'sameAs' ];
+        $optionalFields = $this->getOptionalFields();
 
         foreach ($optionalFields as $field) {
             if ($this->$field !== '') {
