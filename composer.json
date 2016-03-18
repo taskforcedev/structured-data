@@ -1,21 +1,26 @@
 {
-    "name": "taskforcedev/structured-data",
-    "description": "Framework agnosting package to generate structured-data snippets in json-ld format.",
-    "authors": [
-        {
-            "name": "taskforcedev",
-            "email": "taskforce2eu@gmail.com"
-        }
-    ],
-    "license": "GPL-3.0",
-    "keywords": ["Schema.org", "Rich Snippets", "Structured Data"],
-    "require": {
-        "php": ">=5.5.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "Taskforcedev\\StructuredData\\": "src/"
-        }
-    },
-    "minimum-stability": "stable"
+  "name": "taskforcedev/structured-data",
+  "description": "Framework agnosting package to generate structured-data snippets in json-ld format.",
+  "authors": [
+    {
+      "name": "taskforcedev",
+      "email": "taskforce2eu@gmail.com"
+    }
+  ],
+  "license": "GPL-3.0",
+  "keywords": [
+    "Schema.org",
+    "Rich Snippets",
+    "Structured Data"
+  ],
+  "require": {
+    "php": ">=5.5.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Taskforcedev\\StructuredData\\": "src/",
+      "Taskforcedev\\StructuredData\\Tests\\": "tests/"
+    }
+  },
+  "minimum-stability": "stable"
 }
