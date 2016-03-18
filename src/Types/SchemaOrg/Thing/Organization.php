@@ -6,6 +6,7 @@ use Taskforcedev\StructuredData\Types\SchemaTypeInterface;
 class Organization extends Thing implements SchemaTypeInterface
 {
     public $members;
+    public $address;
 
     public function __construct($options = [])
     {
@@ -23,6 +24,11 @@ class Organization extends Thing implements SchemaTypeInterface
         $this->members = [];
     }
 
+    public function setAddress($address)
+    {
+        $this->address = $address;
+    }
+
     public function addMember($member)
     {
         if (!is_object($member)) {
@@ -36,7 +42,7 @@ class Organization extends Thing implements SchemaTypeInterface
     {
         $jsonLd = [
             '@context' => 'http://schema.org',
-            '@type' => 'SportsOrganization',
+            '@type' => 'Organization',
         ];
 
         $requiredFields = ['name'];
