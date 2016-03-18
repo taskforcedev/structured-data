@@ -5,6 +5,8 @@ use Taskforcedev\StructuredData\Types\SchemaTypeInterface;
 
 class Organization extends Thing implements SchemaTypeInterface
 {
+    public $members;
+
     public function __construct($options = [])
     {
         $fields = [  ];
@@ -16,6 +18,18 @@ class Organization extends Thing implements SchemaTypeInterface
                 $this->$field = '';
             }
         }
+
+        // Initialize members array
+        $this->members = [];
+    }
+
+    public function addMember($member)
+    {
+        if (!is_object($member)) {
+            return false; // Member must be an Organization or Person.
+        }
+
+        $this->members[] = $member;
     }
 
     public function getJsonLd($context = true, $json_object = true)
