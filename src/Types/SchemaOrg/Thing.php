@@ -5,10 +5,11 @@ use Taskforcedev\StructuredData\Types\SchemaTypeInterface;
 class Thing implements SchemaTypeInterface
 {
     public $name;
+    public $sameAs;
 
     public function __construct($options = [])
     {
-        $fields = [ 'name' ];
+        $fields = [ 'name', 'sameAs' ];
 
         foreach ($fields as $field) {
             if (array_key_exists($field, $options)) {
@@ -20,6 +21,28 @@ class Thing implements SchemaTypeInterface
     }
 
     public function setName($name) { $this->name = $name; }
+
+    public function addSameAs($url)
+    {
+        $sameAs = $this->sameAs;
+
+        if (!isset($this->sameAs) || $sameAs = '') {
+            $sameAs = [];
+        }
+
+        if (!is_array($sameAs)) {
+            $sameAs = [];
+            $sameAs[] = $this->sameAs;
+        }
+    }
+
+    public function setSameAs($url)
+    {
+        $sameAs = [];
+        $sameAs[] = $url;
+
+        $this->sameAs = $sameAs;
+    }
 
     public function getRequiredFields() { return ['name']; }
 
@@ -38,7 +61,7 @@ class Thing implements SchemaTypeInterface
             }
         }
 
-        $optionalFields = [];
+        $optionalFields = [ 'sameAs' ];
 
         foreach ($optionalFields as $field) {
             if ($this->$field !== '') {
