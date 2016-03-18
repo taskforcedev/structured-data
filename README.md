@@ -1,2 +1,4 @@
 # structured-data
-Generators of Structured Data using JsonLD and schema.org.
+A framework agnostic package to assist in creating valid Schema.org Json-LD.
+
+[![Build Status](https://travis-ci.org/taskforcedev/structured-data.svg?branch=master)](https://travis-ci.org/taskforcedev/structured-data)
