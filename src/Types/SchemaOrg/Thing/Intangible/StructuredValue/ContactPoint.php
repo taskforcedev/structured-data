@@ -1,4 +1,4 @@
-<?php namespace Taskforcedev\StructuredData\Types\SchemaOrg\Thing\Intangible\StructuredValue\ContactPoint;
+<?php namespace Taskforcedev\StructuredData\Types\SchemaOrg\Thing\Intangible\StructuredValue;
 
 use Taskforcedev\StructuredData\Types\SchemaOrg\Thing;
 use Taskforcedev\StructuredData\Types\SchemaTypeInterface;
