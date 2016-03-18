@@ -1,28 +1,11 @@
-<?php namespace Taskforcedev\StructuredData\Types\SchemaOrg;
+<?php namespace Taskforcedev\StructuredData\Types\SchemaOrg\Thing\Place;
+
+use Taskforcedev\StructuredData\Types\SchemaOrg\Thing\Organization;
 
 use Taskforcedev\StructuredData\Types\SchemaTypeInterface;
 
-class LocalBusiness implements SchemaTypeInterface
+class LocalBusiness extends Place implements SchemaTypeInterface
 {
-    public $address;
-    public $name;
-    public $url;
-
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
-
-    public function setUrl($url)
-    {
-        $this->url = $url;
-    }
-
-    public function setAddress($address)
-    {
-        $this->address = $address;
-    }
-
     public function getJsonLd($context = true, $json_object = true)
     {
         $jsonLd = [
