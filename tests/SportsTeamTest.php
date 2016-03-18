@@ -23,7 +23,5 @@ class SportsTeamTest extends TestCase
         $this->assertTrue(strpos($jsonLd, '"givenName":"David"') !== false);
         $this->assertTrue(strpos($jsonLd, '"@context":"http:\/\/schema.org"') !== false);
         $this->assertTrue(strpos($jsonLd, '"@type":"SportsTeam"') !== false);
-
-        var_dump($sportsTeam->getJsonLd());
     }
 }
