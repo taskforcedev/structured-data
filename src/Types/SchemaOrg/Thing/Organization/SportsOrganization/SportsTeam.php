@@ -27,6 +27,12 @@ class SportsTeam extends SportsOrganization implements SchemaTypeInterface
         $this->coach = $coach;
     }
 
+    public function getRequiredFields()
+    {
+        $fields = parent::getRequiredFields();
+        return $fields;
+    }
+
     public function getOptionalFields()
     {
         $fields = parent::getOptionalFields();
@@ -42,7 +48,7 @@ class SportsTeam extends SportsOrganization implements SchemaTypeInterface
             '@type' => 'SportsTeam',
         ];
 
-        $requiredFields = [ ];
+        $requiredFields = $this->getRequiredFields();
 
         foreach ($requiredFields as $field) {
             if ($this->$field !== '' && $this->$field !== null) {
