@@ -45,7 +45,7 @@ class SportsTeam extends SportsOrganization implements SchemaTypeInterface
         $requiredFields = [ ];
 
         foreach ($requiredFields as $field) {
-            if ($this->$field !== '') {
+            if ($this->$field !== '' && $this->$field !== null) {
                 $jsonLd[$field] = $this->$field;
             }
         }
@@ -53,7 +53,13 @@ class SportsTeam extends SportsOrganization implements SchemaTypeInterface
         $optionalFields = $this->getOptionalFields();
 
         foreach ($optionalFields as $field) {
-            if ($this->$field !== '') {
+
+            if ($this->$field !== '' && $this->$field !== null) {
+                if (is_array($this->$field)) {
+                    if (empty($this->$field)) {
+                        continue;
+                    }
+                }
                 $jsonLd[$field] = $this->$field;
             }
         }

@@ -15,8 +15,6 @@ class Thing implements SchemaTypeInterface
         foreach ($fields as $field) {
             if (array_key_exists($field, $options)) {
                 $this->$field = $options[$field];
-            } else {
-                $this->$field = '';
             }
         }
     }
@@ -66,7 +64,7 @@ class Thing implements SchemaTypeInterface
         $requiredFields = $this->getRequiredFields();
 
         foreach ($requiredFields as $field) {
-            if ($this->$field !== '') {
+            if ($this->$field !== '' && $this->$field !== null) {
                 $jsonLd[$field] = $this->$field;
             }
         }

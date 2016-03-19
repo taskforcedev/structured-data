@@ -14,6 +14,15 @@ class SportsTeamTest extends TestCase
         $this->assertEquals($class, 'Taskforcedev\StructuredData\Types\SchemaOrg\Thing\Organization\SportsOrganization\SportsTeam', 'Test namespace is correct');
     }
 
+    public function testSportsTeamWithoutDataIsCorrect()
+    {
+        $sportsTeam = new SportsTeam();
+        $jsonLd = $sportsTeam->getJsonLd();
+        var_dump($jsonLd);
+
+        $this->assertFalse(strpos($jsonLd, '"sameAs"'), 'Json should not have not set value.');
+    }
+
     public function testSettingAthleteWorksIfPassedPersonInstance()
     {
         $sportsTeam = new SportsTeam();
