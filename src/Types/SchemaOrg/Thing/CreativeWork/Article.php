@@ -26,7 +26,7 @@ class Article implements SchemaTypeInterface
     public function getJsonLd($context = true, $json_object = true)
     {
         $jsonLd = [
-            '@type' => 'NewsArticle',
+            '@type' => 'Article',
         ];
 
         if ($context === true) { $jsonLd['@context'] = 'http://schema.org'; }
