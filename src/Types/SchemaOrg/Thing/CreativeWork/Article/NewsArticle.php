@@ -1,28 +1,10 @@
-<?php namespace Taskforcedev\StructuredData\Types\SchemaOrg;
+<?php namespace Taskforcedev\StructuredData\Types\SchemaOrg\Thing\CreativeWork\Article;
 
 use Taskforcedev\StructuredData\Types\SchemaTypeInterface;
+use Taskforcedev\StructuredData\Types\SchemaOrg\Thing\CreativeWork\Article;
 
-class NewsArticle implements SchemaTypeInterface
+class NewsArticle extends Article implements SchemaTypeInterface
 {
-    public $author; // Required.
-    public $datePublished; // Required.
-    public $headline; // Required.
-    public $image; // Required.
-    public $name; // Required.
-    public $publisher; // Required.
-    public $dateModified; // Recommended.
-    public $mainEntityOfPage; // Recommended.
-
-    // Setters
-    public function setAuthor($author) { $this->author = $author; }
-    public function setDatePublished($datePublished) { $this->datePublished = $datePublished; }
-    public function setHeadline($headline) { $this->headline = $headline; }
-    public function setImage($image) { $this->image = $image; }
-    public function setName($name) { $this->name = $name; }
-    public function setPublisher($publisher) { $this->publisher = $publisher; }
-    public function setDateModified($dateModified) { $this->dateModified = $dateModified; }
-    public function setMainEntityOfPage($mainEntityOfPage) { $this->mainEntityOfPage = $mainEntityOfPage; }
-
     public function getJsonLd($context = true, $json_object = true)
     {
         $jsonLd = [
