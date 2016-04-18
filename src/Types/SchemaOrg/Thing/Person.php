@@ -1,8 +1,9 @@
 <?php namespace Taskforcedev\StructuredData\Types\SchemaOrg\Thing;
 
 use Taskforcedev\StructuredData\Types\SchemaTypeInterface;
+use Taskforcedev\StructuredData\Types\SchemaOrg\Thing;
 
-class Person implements SchemaTypeInterface
+class Person extends Thing implements SchemaTypeInterface
 {
     public $givenName;
     public $familyName;
