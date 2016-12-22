@@ -86,24 +86,37 @@ class Thing implements SchemaTypeInterface
 
         foreach ($this->requiredFields as $field) {
             if ($this->$field !== '' && $this->$field !== null) {
+                if (is_array($this->$field) && empty($this->$field)) {
+                    continue;
+                }
                 $jsonLd[$field] = $this->$field;
             }
         }
 
         foreach ($this->recommendedFields as $field) {
             if ($this->$field !== '' && $this->$field !== null) {
+                if (is_array($this->$field) && empty($this->$field)) {
+                    continue;
+                }
                 $jsonLd[$field] = $this->$field;
             }
         }
 
         foreach ($this->optionalFields as $field) {
             if ($this->$field !== null && $this->$field !== '') {
+                if (is_array($this->$field) && empty($this->$field)) {
+                    continue;
+                }
                 $jsonLd[$field] = $this->$field;
             }
         }
 
-        $object = (object)$jsonLd;
+        if ($json_object === true) {
+            $object = (object)$jsonLd;
 
-        return json_encode($object);
+            return json_encode($object);
+        }
+
+        return $jsonLd;
     }
 }
