@@ -1,39 +1,21 @@
 <?php namespace Taskforcedev\StructuredData\Types\SchemaOrg\Thing;
 
+use Taskforcedev\StructuredData\Types\SchemaOrg\Thing;
 use Taskforcedev\StructuredData\Types\SchemaTypeInterface;
 
-class Place implements SchemaTypeInterface
+class Place extends Thing implements SchemaTypeInterface
 {
     public $address;
-    public $name;
 
-    public function setName($name)
+    public function __construct($options = [])
     {
-        $this->name = $name;
+        parent::__construct($options);
+        $this->type = 'Place';
+        $this->recommendedFields[] = 'address';
     }
 
     public function setAddress($address)
     {
         $this->address = $address;
-    }
-
-    public function getJsonLd($context = false, $json_object = false)
-    {
-        $jsonLd = [
-            '@type' => 'Place',
-        ];
-
-        if ($context === true) { $jsonLd['@context'] = 'http://schema.org'; }
-
-        $jsonLd['address'] = $this->address;
-        $jsonLd['name'] = $this->name;
-
-        if ($json_object === true) {
-            $object = (object)$jsonLd;
-
-            return json_encode($object);
-        }
-
-        return $jsonLd;
     }
 }

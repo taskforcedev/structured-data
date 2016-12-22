@@ -38,8 +38,6 @@ class SportsTeamTest extends TestCase
 
         $jsonLd = $sportsTeam->getJsonLd();
 
-        var_dump($jsonLd);
-
         $this->assertTrue(strpos($jsonLd, '"givenName":"John"') !== false, 'Json has a person with givenName: John.');
         $this->assertTrue(strpos($jsonLd, '"givenName":"David"') !== false, 'Json has a person with givenName: David.');
         $this->assertTrue(strpos($jsonLd, '"@context":"http:\/\/schema.org"') !== false, 'Json has the context for schema.org.');
