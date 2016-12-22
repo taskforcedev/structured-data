@@ -4,15 +4,31 @@ use Taskforcedev\StructuredData\Types\SchemaTypeInterface;
 
 class Thing implements SchemaTypeInterface
 {
-    public $name;
-    public $sameAs;
-    public $url;
+    public $name = '';
+    public $sameAs = '';
+    public $url = '';
+
+    public $type; // JSON LD Type
+    public $requiredFields;
+    public $recommendedFields;
+    public $optionalFields;
 
     public function __construct($options = [])
     {
-        $fields = [ 'name', 'sameAs' ];
+        $this->requiredFields = [
+            'name',
+        ];
+        $this->type = 'Thing';
 
-        foreach ($fields as $field) {
+        $this->recommendedFields = [];
+
+        $this->optionalFields = [
+            'sameAs',
+        ];
+
+        $allFields = array_merge($this->requiredFields, $this->recommendedFields, $this->optionalFields);
+
+        foreach ($allFields as $field) {
             if (array_key_exists($field, $options)) {
                 $this->$field = $options[$field];
             }
@@ -24,16 +40,18 @@ class Thing implements SchemaTypeInterface
 
     public function addSameAs($url)
     {
-        $sameAs = $this->sameAs;
-
-        if (!isset($this->sameAs) || $sameAs = '') {
+        if (!is_array($this->sameAs)) {
+            if (isset($this->sameAs) && $this->sameAs !== '') {
+                $existing = $this->sameAs;
+            }
             $sameAs = [];
+
+            if (isset($existing)) {
+                $sameAs[] = $existing;
+            }
         }
 
-        if (!is_array($sameAs)) {
-            $sameAs = [];
-            $sameAs[] = $this->sameAs;
-        }
+        $sameAs[] = $url;
     }
 
     public function setSameAs($url)
@@ -46,33 +64,40 @@ class Thing implements SchemaTypeInterface
 
     public function getRequiredFields()
     {
-        return [ 'name' ];
+        return $this->requiredFields;
+    }
+
+    public function getRecommendedFields()
+    {
+        return $this->recommendedFields;
     }
 
     public function getOptionalFields()
     {
-        return [ 'sameAs' ];
+        return $this->optionalFields;
     }
 
     public function getJsonLd($context = true, $json_object = true)
     {
         $jsonLd = [
             '@context' => 'http://schema.org',
-            '@type' => 'Thing',
+            '@type' => $this->type,
         ];
 
-        $requiredFields = $this->getRequiredFields();
-
-        foreach ($requiredFields as $field) {
+        foreach ($this->requiredFields as $field) {
             if ($this->$field !== '' && $this->$field !== null) {
                 $jsonLd[$field] = $this->$field;
             }
         }
 
-        $optionalFields = $this->getOptionalFields();
+        foreach ($this->recommendedFields as $field) {
+            if ($this->$field !== '' && $this->$field !== null) {
+                $jsonLd[$field] = $this->$field;
+            }
+        }
 
-        foreach ($optionalFields as $field) {
-            if ($this->$field !== '') {
+        foreach ($this->optionalFields as $field) {
+            if ($this->$field !== null && $this->$field !== '') {
                 $jsonLd[$field] = $this->$field;
             }
         }
