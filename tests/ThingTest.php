@@ -20,4 +20,13 @@ class ThingTest extends TestCase
 
         $this->assertTrue(in_array('name', $requiredFields));
     }
+
+    public function testJsonLdIsValid()
+    {
+        $thing = new Thing();
+        $thing->setName('TestThingy');
+        $jsonLd = $thing->getJsonLd();
+        $this->assertTrue(strpos($jsonLd, '"@type":"Thing"') !== false, 'Json-LD uses the correct type.');
+        $this->assertTrue(strpos($jsonLd, '"name":"TestThingy"') !== false, 'Json-LD outputs the provided name.');
+    }
 }
