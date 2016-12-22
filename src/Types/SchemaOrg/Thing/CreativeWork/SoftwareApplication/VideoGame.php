@@ -1,4 +1,4 @@
-<?php namespace Taskforcedev\StructuredData\Types\SchemaOrg\Thing\CreativeWork\SoftwareApplicatoin;
+<?php namespace Taskforcedev\StructuredData\Types\SchemaOrg\Thing\CreativeWork\SoftwareApplication;
 
 use Taskforcedev\StructuredData\Types\SchemaTypeInterface;
 
