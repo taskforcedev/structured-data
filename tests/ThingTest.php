@@ -21,6 +21,13 @@ class ThingTest extends TestCase
         $this->assertTrue(in_array('name', $requiredFields));
     }
 
+    public function testOptionalFields()
+    {
+        $thing = new Thing();
+        $optionalFields = $thing->getOptionalFields();
+        $this->assertTrue(in_array('sameAs', $optionalFields));
+    }
+
     public function testJsonLdIsValid()
     {
         $thing = new Thing();
