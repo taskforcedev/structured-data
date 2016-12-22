@@ -10,18 +10,13 @@ class Organization extends Thing implements SchemaTypeInterface
 
     public function __construct($options = [])
     {
-        $fields = [  ];
-
-        foreach ($fields as $field) {
-            if (array_key_exists($field, $options)) {
-                $this->$field = $options[$field];
-            } else {
-                $this->$field = '';
-            }
+        parent::__construct($options);
+        $this->type = 'Organization';
+        $this->optionalFields[] = 'members';
+        $this->recommendedFields[] = 'address';
+        if (!isset($this->members)) {
+            $this->members = [];
         }
-
-        // Initialize members array
-        $this->members = [];
     }
 
     public function setAddress($address)
@@ -36,33 +31,5 @@ class Organization extends Thing implements SchemaTypeInterface
         }
 
         $this->members[] = $member;
-    }
-
-    public function getJsonLd($context = true, $json_object = true)
-    {
-        $jsonLd = [
-            '@context' => 'http://schema.org',
-            '@type' => 'Organization',
-        ];
-
-        $requiredFields = ['name'];
-
-        foreach ($requiredFields as $field) {
-            if ($this->$field !== '') {
-                $jsonLd[$field] = $this->$field;
-            }
-        }
-
-        $optionalFields = ['sport'];
-
-        foreach ($optionalFields as $field) {
-            if ($this->$field !== '') {
-                $jsonLd[$field] = $this->$field;
-            }
-        }
-
-        $object = (object)$jsonLd;
-
-        return json_encode($object);
     }
 }

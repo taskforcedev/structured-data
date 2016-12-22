@@ -17,15 +17,16 @@ class SportsTeamTest extends TestCase
     public function testSportsTeamWithoutDataIsCorrect()
     {
         $sportsTeam = new SportsTeam();
+        $sportsTeam->setName('My Sports Team');
         $jsonLd = $sportsTeam->getJsonLd();
-        var_dump($jsonLd);
 
-        $this->assertFalse(strpos($jsonLd, '"sameAs"'), 'Json should not have not set value.');
+        $this->assertFalse(strpos($jsonLd, '"sameAs"'), 'Json-ld should not have a not-set value.');
     }
 
     public function testSettingAthleteWorksIfPassedPersonInstance()
     {
         $sportsTeam = new SportsTeam();
+        $sportsTeam->setName('My Sports Team');
         $person = new Person();
         $person->setGivenName('David');
 
@@ -37,8 +38,27 @@ class SportsTeamTest extends TestCase
 
         $jsonLd = $sportsTeam->getJsonLd();
 
+        var_dump($jsonLd);
+
         $this->assertTrue(strpos($jsonLd, '"givenName":"John"') !== false, 'Json has a person with givenName: John.');
         $this->assertTrue(strpos($jsonLd, '"givenName":"David"') !== false, 'Json has a person with givenName: David.');
+        $this->assertTrue(strpos($jsonLd, '"@context":"http:\/\/schema.org"') !== false, 'Json has the context for schema.org.');
+        $this->assertTrue(strpos($jsonLd, '"@type":"SportsTeam"') !== false, 'Json has the type of SportsTeam as expected.');
+    }
+
+    public function testSettingCoachWorksIfPassedPersonInstance()
+    {
+        $sportsTeam = new SportsTeam();
+        $sportsTeam->setName('My Sports Team');
+        $person = new Person();
+        $person->setGivenName('David');
+
+        $sportsTeam->setCoach($person);
+
+        $jsonLd = $sportsTeam->getJsonLd();
+
+        $this->assertTrue(strpos($jsonLd, 'coach":{') !== false, 'Json includes Coach.');
+        $this->assertTrue(strpos($jsonLd, '"givenName":"David"') !== false, 'Json has a person with givenName: John.');
         $this->assertTrue(strpos($jsonLd, '"@context":"http:\/\/schema.org"') !== false, 'Json has the context for schema.org.');
         $this->assertTrue(strpos($jsonLd, '"@type":"SportsTeam"') !== false, 'Json has the type of SportsTeam as expected.');
     }
