@@ -13,6 +13,23 @@ class Article implements SchemaTypeInterface
     public $dateModified; // Recommended.
     public $mainEntityOfPage; // Recommended.
 
+    public $requiredFields;
+    public $recommendedFields;
+    public $type;
+
+    public function __construct()
+    {
+        $this->requiredFields = [
+            'author', 'datePublished', 'headline', 'image', 'name', 'publisher'
+        ];
+
+        $this->recommendedFields = [
+            'dateModified'
+        ];
+
+        $this->type = 'Article';
+    }
+
     // Setters
     public function setAuthor($author) { $this->author = $author; }
     public function setDatePublished($datePublished) { $this->datePublished = $datePublished; }
@@ -26,22 +43,18 @@ class Article implements SchemaTypeInterface
     public function getJsonLd($context = true, $json_object = true)
     {
         $jsonLd = [
-            '@type' => 'Article',
+            '@type' => $this->type,
         ];
 
         if ($context === true) { $jsonLd['@context'] = 'http://schema.org'; }
 
-        $requiredFields = ['author', 'datePublished', 'headline', 'image', 'name', 'publisher'];
-
-        foreach ($requiredFields as $field) {
+        foreach ($this->requiredFields as $field) {
             if ($this->$field !== '') {
                 $jsonLd[$field] = $this->$field;
             }
         }
 
-        $recommendedFields = ['dateModified'];
-
-        foreach ($recommendedFields as $field) {
+        foreach ($this->recommendedFields as $field) {
             if ($this->$field !== '') {
                 $jsonLd[$field] = $this->$field;
             }
