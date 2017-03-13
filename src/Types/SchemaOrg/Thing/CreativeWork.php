@@ -20,7 +20,9 @@ class CreativeWork extends Thing implements SchemaTypeInterface
 
     public function setAuthor(CreativeWorkAuthorInterface $author)
     {
-        $this->author = $author;
+        $context = false;
+        $json_encode = false;
+        $this->author = $author->getJsonLd($context, $json_encode);
     }
 
     public function getJsonLd($context = true, $json_object = true)
