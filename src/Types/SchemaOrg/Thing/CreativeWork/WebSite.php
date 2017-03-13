@@ -9,14 +9,7 @@ class WebSite extends CreativeWork implements SchemaTypeInterface
 {
     public function __construct()
     {
-        $this->requiredFields = [
-            
-        ];
-
-        $this->recommendedFields = [
-            
-        ];
-
+        parent::__construct();
         $this->type = 'WebSite';
     }
 
