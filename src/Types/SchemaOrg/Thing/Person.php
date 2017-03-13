@@ -24,4 +24,41 @@ class Person extends Thing implements SchemaTypeInterface, CreativeWorkAuthorInt
     public function setFamilyName($familyName) { $this->familyName = $familyName; }
     public function setSurname($surname) { $this->familyName = $surname; }
     public function setEmail($email) { $this->email = $email; }
+
+    public function getJsonLd($context = true, $json_object = true)
+    {
+        $jsonLd = [
+            '@type' => $this->type,
+        ];
+
+        if ($context === true) { $jsonLd['@context'] = 'http://schema.org'; }
+
+        foreach ($this->requiredFields as $field) {
+            if ($this->$field !== '') {
+                $jsonLd[$field] = $this->$field;
+            }
+        }
+
+        foreach ($this->recommendedFields as $field) {
+            if ($this->$field !== '') {
+                $jsonLd[$field] = $this->$field;
+            }
+        }
+
+        $optionalFields = [];
+
+        foreach ($optionalFields as $field) {
+            if ($this->$field !== '') {
+                $jsonLd[$field] = $this->$field;
+            }
+        }
+
+        if ($json_object === true) {
+            $object = (object)$jsonLd;
+
+            return json_encode($object);
+        }
+
+        return $jsonLd;
+    }
 }
