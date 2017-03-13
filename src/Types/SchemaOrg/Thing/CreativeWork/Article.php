@@ -1,10 +1,12 @@
-<?php namespace Taskforcedev\StructuredData\Types\SchemaOrg\Thing\CreativeWork;
+<?php
 
+namespace Taskforcedev\StructuredData\Types\SchemaOrg\Thing\CreativeWork;
+
+use Taskforcedev\StructuredData\Types\SchemaOrg\Thing\CreativeWork;
 use Taskforcedev\StructuredData\Types\SchemaTypeInterface;
 
-class Article implements SchemaTypeInterface
+class Article extends CreativeWork implements SchemaTypeInterface
 {
-    public $author; // Required.
     public $datePublished; // Required.
     public $headline; // Required.
     public $image; // Required.
