@@ -6,8 +6,6 @@ use Taskforcedev\StructuredData\Types\SchemaTypeInterface;
 
 class WebSite extends CreativeWork implements SchemaTypeInterface
 {
-    public $author;
-
     public function __construct()
     {
         $this->requiredFields = [
@@ -19,11 +17,6 @@ class WebSite extends CreativeWork implements SchemaTypeInterface
         ];
 
         $this->type = 'WebSite';
-    }
-
-    public function setAuthor($author)
-    {
-        $this->author = $author;
     }
 
     public function getJsonLd($context = true, $json_object = true)
