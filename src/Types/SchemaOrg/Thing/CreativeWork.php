@@ -3,6 +3,7 @@
 namespace Taskforcedev\StructuredData\Types\SchemaOrg\Thing;
 
 use Taskforcedev\StructuredData\Types\SchemaTypeInterface;
+use Taskforcedev\StructuredData\Interfaces\CreativeWorkAuthorInterface;
 
 class CreativeWork implements SchemaTypeInterface
 {
@@ -11,7 +12,7 @@ class CreativeWork implements SchemaTypeInterface
     public function __construct()
     {
         $this->requiredFields = [
-            
+            'author'
         ];
 
         $this->recommendedFields = [
@@ -21,7 +22,7 @@ class CreativeWork implements SchemaTypeInterface
         $this->type = 'CreativeWork';
     }
 
-    public function setAuthor($author)
+    public function setAuthor(CreativeWorkAuthorInterface $author)
     {
         $this->author = $author;
     }

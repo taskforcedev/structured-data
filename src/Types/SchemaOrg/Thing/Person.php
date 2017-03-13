@@ -2,8 +2,9 @@
 
 use Taskforcedev\StructuredData\Types\SchemaTypeInterface;
 use Taskforcedev\StructuredData\Types\SchemaOrg\Thing;
+use Taskforcedev\StructuredData\Interfaces\CreativeWorkAuthorInterface;
 
-class Person extends Thing implements SchemaTypeInterface
+class Person extends Thing implements SchemaTypeInterface, CreativeWorkAuthorInterface
 {
     public $givenName = '';
     public $familyName = '';
