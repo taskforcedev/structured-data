@@ -3,7 +3,7 @@
 namespace Taskforcedev\StructuredData\Types\SchemaOrg\Thing;
 
 use Taskforcedev\StructuredData\Types\SchemaTypeInterface;
-use Taskforcedev\StructuredData\Interfaces\CreativeWorkAuthorInterface;
+use Taskforcedev\StructuredData\Interfaces\SchemaOrg\CreativeWorkAuthorInterface;
 use Taskforcedev\StructuredData\Types\SchemaOrg\Thing;
 
 class CreativeWork extends Thing implements SchemaTypeInterface
