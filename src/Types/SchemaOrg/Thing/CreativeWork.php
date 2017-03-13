@@ -12,13 +12,8 @@ class CreativeWork extends Thing implements SchemaTypeInterface
 
     public function __construct()
     {
-        $this->requiredFields = [
-            'author'
-        ];
-
-        $this->recommendedFields = [
-            
-        ];
+        parent::__construct();
+        $this->recommendedFields[] = 'author';
 
         $this->type = 'CreativeWork';
     }
