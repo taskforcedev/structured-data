@@ -3,6 +3,7 @@
 namespace Taskforcedev\StructuredData\Types\SchemaOrg\Thing\CreativeWork;
 
 use Taskforcedev\StructuredData\Types\SchemaTypeInterface;
+use Taskforcedev\StructuredData\Types\SchemaOrg\Thing\CreativeWork;
 
 class WebSite extends CreativeWork implements SchemaTypeInterface
 {
