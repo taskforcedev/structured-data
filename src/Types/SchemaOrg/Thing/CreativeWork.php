@@ -4,8 +4,9 @@ namespace Taskforcedev\StructuredData\Types\SchemaOrg\Thing;
 
 use Taskforcedev\StructuredData\Types\SchemaTypeInterface;
 use Taskforcedev\StructuredData\Interfaces\CreativeWorkAuthorInterface;
+use Taskforcedev\StructuredData\Types\SchemaOrg\Thing;
 
-class CreativeWork implements SchemaTypeInterface
+class CreativeWork extends Thing implements SchemaTypeInterface
 {
     public $author;
 
